@@ -12,7 +12,7 @@ Choose 1-9
 8. Real HDD/Flash space
 9. Quit";
 
-mod short;
+use kolkulator::short;
 
 use std::io::{stdout, Write};
 use crossterm::{terminal::{ClearType, Clear}, QueueableCommand, cursor::MoveTo, event::{read, Event, KeyCode}};
@@ -42,8 +42,7 @@ fn key_eater() { // this bad boy somehow eats the ghost keys, so 1 key doesn't d
 fn get_input() -> String {
     key_eater();
 
-    return read()
-    .map(|event| {
+    return read().map(|event| {
         match event {
             Event::Key(key_event) => {
                 match key_event.code {
